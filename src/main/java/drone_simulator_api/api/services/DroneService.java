@@ -1,4 +1,4 @@
-package drone_simulator_api.services;
+package drone_simulator_api.api.services;
 
 import java.util.Comparator;
 import java.util.List;
@@ -8,11 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import drone_simulator_api.entities.Drone;
-import drone_simulator_api.entities.Package;
-import drone_simulator_api.exceptions.ResourceNotFoundException;
-import drone_simulator_api.repositories.DroneRepository;
-import drone_simulator_api.repositories.PackageRepository;
+import drone_simulator_api.api.entities.Drone;
+import drone_simulator_api.api.entities.Package;
+import drone_simulator_api.api.exceptions.ResourceNotFoundException;
+import drone_simulator_api.api.repositories.DroneRepository;
+import drone_simulator_api.api.repositories.PackageRepository;
 
 @Service
 public class DroneService {
@@ -22,6 +22,24 @@ public class DroneService {
 
   @Autowired
   private PackageRepository packageRepository;
+
+  public List<Drone> getAllDrones() {
+    return droneRepository.findAll();
+  }
+
+  public Drone getDroneById(Long droneId) {
+    return droneRepository.findById(droneId)
+        .orElseThrow(() -> new ResourceNotFoundException("Drone not found with id " + droneId));
+  }
+
+  public List<Drone> getDronesByState(Drone.DroneState state) {
+    return droneRepository.findByState(state);
+  }
+
+  @Transactional
+  public Drone createDrone(Drone newDrone) {
+    return droneRepository.save(newDrone);
+  }
 
   private double calculateDistance(double x1, double y1, double x2, double y2) {
     return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));

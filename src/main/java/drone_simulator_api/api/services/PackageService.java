@@ -1,4 +1,4 @@
-package drone_simulator_api.services;
+package drone_simulator_api.api.services;
 
 import java.util.List;
 
@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import drone_simulator_api.entities.Package;
-import drone_simulator_api.entities.Package.PackageStatus;
-import drone_simulator_api.exceptions.ResourceNotFoundException;
-import drone_simulator_api.repositories.PackageRepository;
+import drone_simulator_api.api.entities.Package;
+import drone_simulator_api.api.entities.Package.PackageStatus;
+import drone_simulator_api.api.exceptions.ResourceNotFoundException;
+import drone_simulator_api.api.repositories.PackageRepository;
 
 @Service
 public class PackageService {

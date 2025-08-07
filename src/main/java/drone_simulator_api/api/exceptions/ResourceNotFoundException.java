@@ -1,4 +1,4 @@
-package drone_simulator_api.exceptions;
+package drone_simulator_api.api.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

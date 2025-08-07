@@ -1,4 +1,4 @@
-package drone_simulator_api.entities;
+package drone_simulator_api.api.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
