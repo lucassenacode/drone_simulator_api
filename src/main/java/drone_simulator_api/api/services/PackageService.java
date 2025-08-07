@@ -55,4 +55,8 @@ public class PackageService {
         .orElseThrow(() -> new ResourceNotFoundException("Package not found with id " + packageId));
     return pkg.getStatus();
   }
+
+  public List<Package> getDeliveredPackages() {
+    return packageRepository.findByStatus(Package.PackageStatus.DELIVERED);
+  }
 }

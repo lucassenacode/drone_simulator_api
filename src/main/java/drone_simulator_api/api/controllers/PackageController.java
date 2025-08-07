@@ -65,4 +65,10 @@ public class PackageController {
     List<Package> pendingPackages = packageService.getPendingPackages();
     return ResponseEntity.ok(pendingPackages);
   }
+
+  @GetMapping("/delivered")
+  public ResponseEntity<List<Package>> getDeliveredPackages() {
+    List<Package> deliveredPackages = packageService.getDeliveredPackages();
+    return ResponseEntity.ok(deliveredPackages);
+  }
 }
